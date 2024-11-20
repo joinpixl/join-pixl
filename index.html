@@ -1,395 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <!-- Meta and title tags -->
     <meta charset="UTF-8">
-    <title>PixL Waitlist</title>
-    <link rel="icon" href="favicon.jpg" type="image/x-icon">
-    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixL - Game Development</title>
+    <!-- Fonts and icons -->
+    <link rel="icon" href="Ima" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <!-- Styles -->
     <style>
-        body {
-            background-color: #1e1e1e;
-            color: #fff;
-            font-family: 'Press Start 2P', sans-serif;
-            margin: 0;
-            padding: 0;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            min-height: 100vh;
-            opacity: 1;
-            transition: opacity 0.5s ease-in-out;
+      body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background-color: #111;
+        color: #fff;
+        overflow-x: hidden;
+        scroll-behavior: smooth;
+      }
+
+      footer {
+        background-color: #222;
+        color: #aaa;
+        padding: 15px;
+        text-align: center;
+        font-family: 'Courier Prime', monospace;
+        border-top: 1px solid #333;
+      }
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 40px;
+        background-color: #222;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+      }
+
+      .logo {
+        max-width: 200px;
+      }
+
+      .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+        height: auto;
+        box-sizing: border-box;
+        animation: fade-in 2s ease-in-out;
+      }
+
+      .main-content {
+        max-width: 600px;
+        animation: slide-in-left 1.5s ease-in-out;
+        margin: 20px;
+        text-align: center;
+      }
+
+      .main-content h1 {
+        font-size: 48px;
+        line-height: 1.2;
+        margin-bottom: 20px;
+      }
+
+      .main-content h1 span {
+        color: #c084fc;
+      }
+
+      .main-content p {
+        margin-top: 20px;
+        font-size: 20px;
+        color: #bbb;
+      }
+
+      .courier-text {
+        font-family: 'Courier Prime', monospace;
+      }
+
+      .button {
+        margin-top: 20px;
+        display: inline-block;
+        padding: 14px 28px;
+        background-color: #8ce1dd;
+        color: #111;
+        text-decoration: none;
+        border-radius: 8px;
+        font-weight: bold;
+        font-size: 17px;
+        transition: transform 0.3s, box-shadow 0.3s;
+      }
+
+      .button:hover {
+        transform: scale(1.1);
+        box-shadow: 0 6px 20px rgba(140, 225, 221, 0.4);
+      }
+
+      .side-image {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-top: 20px;
+        width: 100%;
+      }
+
+      .side-image-img {
+        max-width: 90%;
+        height: auto;
+        border-radius: 10px;
+        animation: pulse 2s infinite;
+      }
+
+      .slideshow-container {
+        max-width: 100%;
+        position: relative;
+        margin: 40px auto;
+        border-radius: 20px;
+        overflow: hidden;
+        background: linear-gradient(135deg, #561192, #741BC1);
+        padding: 20px;
+        display: flex;
+        align-items: center;
+      }
+
+      .mySlides {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 20px;
+        animation: slide-in-up 1.5s ease-in-out;
+      }
+
+      .slideshow-text {
+        font-size: 24px;
+        color: #fff;
+        line-height: 1.3;
+        font-weight: 600;
+        max-width: 90%;
+      }
+
+      .slideshow-text span {
+        color: #86efac;
+      }
+
+      .slideshow-image {
+        width: 100%;
+        max-width: 400px;
+        height: auto;
+        object-fit: contain;
+        border-radius: 15px;
+        box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        animation: zoom-in-out 1.5s ease-in-out;
+      }
+
+      .prev, .next {
+        cursor: pointer;
+        position: absolute;
+        top: 50%;
+        width: auto;
+        padding: 12px;
+        margin-top: -20px;
+        color: white;
+        font-weight: bold;
+        font-size: 20px;
+        border-radius: 50%;
+        background-color: rgba(0, 0, 0, 0.5);
+        user-select: none;
+      }
+
+      .next {
+        right: 10px;
+      }
+
+      .prev {
+        left: 10px;
+      }
+
+      .prev:hover, .next:hover {
+        background-color: rgba(0,0,0,0.8);
+        transform: scale(1.1);
+      }
+
+      .dot-container {
+        text-align: center;
+        padding: 10px;
+        background: transparent;
+      }
+
+      .dot {
+        cursor: pointer;
+        height: 10px;
+        width: 10px;
+        margin: 3px;
+        background-color: #bbb;
+        border-radius: 50%;
+        display: inline-block;
+        transition: background-color 0.6s ease;
+      }
+
+      .active, .dot:hover {
+        background-color: #717171;
+      }
+
+      .content-heading {
+        text-align: center;
+        font-size: 36px;
+        font-weight: bold;
+        margin-top: 30px;
+      }
+
+      .content-links {
+        background-color: #9F54C8;
+        padding: 20px;
+        border-radius: 10px;
+        margin-top: 20px;
+        text-align: center;
+      }
+
+      .content-links a {
+        display: inline-block;
+        margin: 10px;
+        font-size: 16px;
+        color: #fff;
+        text-decoration: none;
+        border: 2px solid #fff;
+        padding: 8px 16px;
+        border-radius: 5px;
+        transition: background-color 0.3s, transform 0.3s;
+      }
+
+      .content-links a:hover {
+        background-color: #7ED1C4;
+        transform: scale(1.1);
+      }
+
+      .bottom-section {
+        background: linear-gradient(135deg, #561192, #3e0f6e);
+        padding: 40px;
+        text-align: center;
+        color: #fff;
+        margin-top: 30px;
+        border-radius: 15px;
+      }
+
+      .bottom-section h3 {
+        font-size: 24px;
+        font-family: 'Courier Prime', monospace;
+        margin-bottom: 20px;
+        line-height: 1.5;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
+      }
+
+      .bottom-section a {
+        text-decoration: none;
+        padding: 12px 30px;
+        background-color: #8ce1dd;
+        color: #111;
+        font-weight: bold;
+        border-radius: 10px;
+        font-size: 18px;
+        transition: transform 0.3s, box-shadow 0.3s;
+        box-shadow: 0 5px 15px rgba(140, 225, 221, 0.4);
+      }
+
+      .bottom-section a:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 20px rgba(140, 225, 221, 0.6);
+      }
+
+      footer p {
+        margin: 5px 0;
+      }
+
+      footer span {
+        color: #c084fc;
+      }
+
+      .social-media {
+        display: flex;
+        justify-content: center;
+        margin-top: 10px;
+      }
+
+      .social-media a {
+        margin: 0 15px;
+        color: #c084fc;
+        font-size: 20px;
+        text-decoration: none;
+        transition: color 0.3s;
+      }
+
+      .social-media a:hover {
+        color: #8ce1dd;
+      }
+
+      /* Responsive adjustments for different screen sizes */
+      @media (max-width: 1024px) {
+        .main-content h1 {
+          font-size: 36px;
         }
 
-        body.fade-out {
-            opacity: 0;
-        }
-
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 40px 20px;
-            background-color: #222;
-            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        .container {
-            width: 90%;
-            max-width: 700px;
-            background: #222;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
-            text-align: center;
-            margin-top: 30px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        h2 {
-            color: #b78af6;
-            font-size: 1.5rem;
-            margin-bottom: 20px;
-        }
-
-        .input-group {
-            position: relative;
-            margin-bottom: 20px;
-            width: 100%;
-        }
-
-        .input-group input {
-            width: 100%;
-            padding: 15px;
-            border: 2px solid #444;
-            border-radius: 15px;
-            background-color: #1e1e1e;
-            color: #fff;
-            font-size: 1rem;
-            outline: none;
+        .main-content p {
+          font-size: 18px;
         }
 
         .button {
-            background-color: #c084fc;
-            border: none;
-            padding: 15px 30px;
-            color: #111;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-            width: 100%;
-            margin-top: 20px;
-            font-family: 'Montserrat', sans-serif;
-        }
-
-        .button:hover {
-            background-color: #a05cc3;
-        }
-
-        .confirmation-popup {
-            display: none;
-            position: fixed;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            background-color: #222;
-            border-radius: 20px;
-            padding: 20px;
-            width: 90%;
-            max-width: 400px;
-            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-            text-align: center;
-            z-index: 1000;
-        }
-
-        .confirmation-popup img {
-            width: 80px;
-            margin-bottom: 15px;
-        }
-
-        .confirmation-popup h3 {
-            color: #86efac;
-            margin-bottom: 10px;
-        }
-
-        .confirmation-popup p {
-            color: #bbb;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-
-        .overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0, 0, 0, 0.7);
-            z-index: 999;
-        }
-
-        footer {
-            background-color: #222;
-            width: 100%;
-            padding: 10px;
-            text-align: center;
-            color: #aaa;
-            font-size: 0.7rem;
-            border-top: 2px solid #3e3e3e;
-            margin-top: auto;
-        }
-
-        footer span {
-            color: #c084fc;
-        }
-
-        .slideshow-container {
-            width: 100%;
-            max-width: 800px;
-            position: relative;
-            margin: 40px auto;
-            border-radius: 20px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #561192, #741BC1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            height: auto;
-        }
-
-        .mySlides {
-            display: none;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-            box-sizing: border-box;
+          padding: 10px 20px;
+          font-size: 15px;
         }
 
         .slideshow-text {
-            font-size: 1.2rem;
-            color: #fff;
-            line-height: 1.4;
-            margin: 10px 0;
-            max-width: 90%;
-            text-align: center;
-        }
-
-        .slideshow-text span {
-            color: #86efac;
+          font-size: 20px;
         }
 
         .slideshow-image {
-            width: 90%;
-            max-width: 400px;
-            height: auto;
-            border-radius: 15px;
-            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-            margin-top: 10px;
+          max-width: 80%;
         }
 
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 10px;
-            color: white;
-            font-weight: bold;
-            font-size: 20px;
-            border-radius: 50%;
-            background-color: rgba(0, 0, 0, 0.5);
-            user-select: none;
+        .content-heading {
+          font-size: 28px;
         }
 
-        .next {
-            right: 10px;
+        .bottom-section h3 {
+          font-size: 20px;
+        }
+      }
+
+      @media (max-width: 768px) {
+        header {
+          padding: 20px 10px;
         }
 
-        .prev {
-            left: 10px;
+        .main-content h1 {
+          font-size: 28px;
         }
 
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
+        .main-content p {
+          font-size: 16px;
         }
 
-        .dot-container {
-            text-align: center;
-            padding: 10px;
-            background: transparent;
+        .button {
+          padding: 8px 16px;
+          font-size: 14px;
         }
 
-        .dot {
-            cursor: pointer;
-            height: 10px;
-            width: 10px;
-            margin: 3px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
+        .side-image {
+          display: none;
         }
 
-        .active, .dot:hover {
-            background-color: #717171;
+        .slideshow-text {
+          font-size: 16px;
         }
 
-        /* Responsive adjustments */
-        @media (max-width: 768px) {
-            .container {
-                padding: 20px;
-            }
-
-            h2 {
-                font-size: 1.3rem;
-            }
-
-            .input-group input {
-                padding: 12px;
-                font-size: 0.9rem;
-            }
-
-            .button {
-                padding: 12px 20px;
-                font-size: 0.9rem;
-            }
-
-            .slideshow-text {
-                font-size: 1rem;
-            }
-
-            .prev, .next {
-                font-size: 18px;
-                padding: 8px;
-            }
-
-            .confirmation-popup {
-                padding: 15px;
-            }
-
-            .confirmation-popup img {
-                width: 60px;
-            }
-
-            .confirmation-popup h3 {
-                font-size: 1rem;
-            }
-
-            .confirmation-popup p {
-                font-size: 0.8rem;
-            }
-
-            .slideshow-image {
-                width: 80%;
-            }
+        .slideshow-image {
+          max-width: 90%;
         }
 
-        @media (max-width: 480px) {
-            header {
-                padding: 20px 10px;
-                flex-direction: column;
-                align-items: center;
-            }
-
-            h2 {
-                font-size: 1rem;
-            }
-
-            .input-group input {
-                font-size: 0.8rem;
-            }
-
-            .button {
-                font-size: 0.8rem;
-                padding: 10px 15px;
-            }
-
-            .slideshow-container {
-                padding: 10px;
-            }
-
-            .slideshow-text {
-                font-size: 0.9rem;
-            }
-
-            .prev, .next {
-                font-size: 16px;
-                padding: 6px;
-            }
-
-            .dot {
-                height: 8px;
-                width: 8px;
-            }
-
-            .slideshow-image {
-                width: 100%;
-            }
+        .bottom-section h3 {
+          font-size: 18px;
         }
+      }
+
+      @media (max-width: 480px) {
+        .main-content h1 {
+          font-size: 24px;
+        }
+
+        .main-content p {
+          font-size: 14px;
+        }
+
+        .button {
+          padding: 6px 12px;
+          font-size: 12px;
+        }
+
+        .slideshow-container {
+          padding: 10px;
+        }
+
+        .slideshow-text {
+          font-size: 14px;
+        }
+
+        .content-links a {
+          font-size: 12px;
+          padding: 6px 12px;
+        }
+
+        .bottom-section h3 {
+          font-size: 16px;
+        }
+
+        footer p {
+          font-size: 10px;
+        }
+
+        .social-media a {
+          font-size: 14px;
+          margin: 0 8px;
+        }
+      }
     </style>
 </head>
 <body>
+
+    <!-- Header Section -->
     <header>
-        <h1>Pix<span class="highlight">L</span>.</h1>
+        <img src="Images/PixLlogo.png" alt="PixL Logo" class="logo">
     </header>
 
-    <div class="content">
-        <div class="container">
-            <h2>Join our waitlist below</h2>
-            <form id="waitlistForm">
-                <div class="input-group">
-                    <input type="text" id="fullName" name="fullName" placeholder="Full name" required>
-                </div>
-                <div class="input-group">
-                    <input type="email" id="email" name="email" placeholder="Email" required>
-                </div>
-                <button type="submit" class="button">Join the waitlist →</button>
-            </form>
+    <!-- Main Container -->
+    <div class="container">
+        <div class="main-content">
+            <h1>Your <span>Game</span> <span>Development</span> journey starts here.</h1>
+            <p class="courier-text">Connect, collaborate, and create within a vibrant game development space. Discover projects and bring your ideas to life.</p>
+            <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
+        </div>
+        <div class="side-image">
+            <img src="Images/main.jpg" alt="Game Development Image" class="side-image-img">
         </div>
     </div>
 
-    <!-- Features Slideshow -->
+    <!-- Features Heading -->
+    <h2 class="content-heading">Features of PixL</h2>
+
+    <!-- Slideshow Container -->
     <div class="slideshow-container">
         <!-- Slide 1 -->
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
             </div>
-            <img src="Images/whiteboard.png" alt="Collaboration Tools" class="slideshow-image">
+            <img src="Images/whiteboard.png" class="slideshow-image" alt="Collaboration Tools">
         </div>
         <!-- Slide 2 -->
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to <span>inspire</span>.</p>
             </div>
-            <img src="Images/img3.png" alt="Game Ideas and Inspiration" class="slideshow-image">
+            <img src="Images/img3.png" class="slideshow-image" alt="Game Ideas and Inspiration">
         </div>
         <!-- Slide 3 -->
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
             </div>
-            <img src="Images/img2.png" alt="Game Development Events" class="slideshow-image">
+            <img src="Images/img2.png" class="slideshow-image" alt="Game Development Events">
         </div>
         <!-- Slide 4 -->
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Share</span> projects, get feedback, and <span>invite</span> developers to <span>contribute</span>.</p>
             </div>
-            <img src="Images/img1.png" alt="Game Development Collaboration" class="slideshow-image">
+            <img src="Images/img1.png" class="slideshow-image" alt="Game Development Collaboration">
         </div>
         <!-- Slide 5 -->
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration <span>invites</span>.</p>
             </div>
-            <img src="Images/img5.png" alt="Connect with Developers" class="slideshow-image">
+            <img src="Images/img5.png" class="slideshow-image" alt="Connect with Developers">
         </div>
 
         <!-- Navigation Arrows -->
@@ -406,85 +480,29 @@
         <span class="dot" onclick="currentSlide(5)"></span>
     </div>
 
-    <!-- Confirmation Popup -->
-    <div class="overlay" id="overlay"></div>
-    <div class="confirmation-popup" id="confirmationPopup">
-        <img src="Images/tick.png" alt="Tick mark">
-        <h3>Congratulations!</h3>
-        <p>You have successfully been added to our waitlist.</p>
-        <p>We will be giving you timely updates on our progress.</p>
+    <!-- Content Heading -->
+    <h2 class="content-heading">Content</h2>
+    <div class="content-links">
+        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 1</a>
+        <a href="https://www.instagram.com/reel/DCLqEZOSVKO/" target="_blank">Instagram Reel 2</a>
+        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 3</a>
     </div>
 
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+        <h3>You've hit the bottom of the page!<br>Ready to level up?</h3>
+        <h3>Join PixL.</h3>
+        <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
+    </div>
+
+    <!-- Footer Section -->
     <footer>
         <p>© 2024 PixL. All Rights Reserved.</p>
-        <p>Developed by Om Arora, Avaneesh Prabhu, Naksh Bablani, Lavanya Charan, Kashish Khattar, and Aditya Patil.</p>
+        <p>Developed by <span>Om Arora, Avaneesh Prabhu, Naksh Bablani, Lavanya Charan, Kashish Khattar, and Aditya Patil</span>.</p>
     </footer>
 
+    <!-- Scripts -->
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const links = document.querySelectorAll('a');
-            links.forEach(link => {
-                link.addEventListener('click', function(event) {
-                    if (link.href && link.href.includes(location.hostname)) {
-                        event.preventDefault();
-                        document.body.classList.add('fade-out');
-                        setTimeout(() => {
-                            window.location.href = link.href;
-                        }, 500);
-                    }
-                });
-            });
-        });
-
-        document.getElementById('waitlistForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const emailPattern = /^[^@\s]+@(gmail\.com|outlook\.com|yahoo\.com)$/i;
-
-            if (fullName === '') {
-                alert('Please enter your full name.');
-                return;
-            }
-
-            if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address ending with @gmail.com, @outlook.com, or @yahoo.com.');
-                return;
-            }
-
-            const data = {
-                data: {
-                    "Name": fullName,
-                    "Email": email
-                }
-            };
-
-            fetch('https://api.apispreadsheets.com/data/1wCZDoqEVgE32ZMA/', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            }).then(response => {
-                if (response.status === 201) {
-                    document.getElementById('overlay').style.display = 'block';
-                    document.getElementById('confirmationPopup').style.display = 'block';
-                    document.getElementById('waitlistForm').reset();
-                } else {
-                    alert('There was an error submitting your data. Please try again.');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your data. Please try again.');
-            });
-        });
-
-        document.getElementById('overlay').addEventListener('click', function() {
-            document.getElementById('overlay').style.display = 'none';
-            document.getElementById('confirmationPopup').style.display = 'none';
-        });
-
         let slideIndex = 0;
         showSlides();
 
