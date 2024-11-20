@@ -20,21 +20,15 @@
         scroll-behavior: smooth;
       }
 
-      footer {
-        background-color: #222;
-        color: #aaa;
-        padding: 15px;
-        text-align: center;
-        font-family: 'Courier Prime', monospace;
-        border-top: 1px solid #333;
-      }
       header {
+        width: 100%;
         display: flex;
         justify-content: space-between;
         align-items: center;
-        padding: 40px;
+        padding: 20px 40px; /* Adjusted padding for better spacing */
         background-color: #222;
         box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+        box-sizing: border-box;
       }
 
       .logo {
@@ -73,10 +67,6 @@
         margin-top: 20px;
         font-size: 20px;
         color: #bbb;
-      }
-
-      .courier-text {
-        font-family: 'Courier Prime', monospace;
       }
 
       .button {
@@ -120,11 +110,11 @@
         margin: 40px auto;
         border-radius: 20px;
         overflow: hidden;
-        background: linear-gradient(135deg, #561192, #741BC1);
-        padding: 20px;
         display: flex;
         flex-direction: column;
         align-items: center;
+        background: none; /* Removed grey background */
+        padding: 0; /* Removed padding to prevent extra space */
       }
 
       .mySlides {
@@ -134,7 +124,7 @@
         text-align: center;
         gap: 20px;
         animation: slide-in-up 1.5s ease-in-out;
-        width: 100%; /* Ensure full width */
+        width: 100%;
       }
 
       .mySlides.active {
@@ -194,7 +184,6 @@
       .dot-container {
         text-align: center;
         padding: 10px;
-        background: transparent;
       }
 
       .dot {
@@ -219,131 +208,11 @@
         margin-top: 30px;
       }
 
-      .content-links {
-        background-color: #9F54C8;
-        padding: 20px;
-        border-radius: 10px;
-        margin-top: 20px;
-        text-align: center;
-      }
-
-      .content-links a {
-        display: inline-block;
-        margin: 10px;
-        font-size: 16px;
-        color: #fff;
-        text-decoration: none;
-        border: 2px solid #fff;
-        padding: 8px 16px;
-        border-radius: 5px;
-        transition: background-color 0.3s, transform 0.3s;
-      }
-
-      .content-links a:hover {
-        background-color: #7ED1C4;
-        transform: scale(1.1);
-      }
-
-      .bottom-section {
-        background: linear-gradient(135deg, #561192, #3e0f6e);
-        padding: 40px;
-        text-align: center;
-        color: #fff;
-        margin-top: 30px;
-        border-radius: 15px;
-      }
-
-      .bottom-section h3 {
-        font-size: 24px;
-        font-family: 'Courier Prime', monospace;
-        margin-bottom: 20px;
-        line-height: 1.5;
-        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.3);
-      }
-
-      .bottom-section a {
-        text-decoration: none;
-        padding: 12px 30px;
-        background-color: #8ce1dd;
-        color: #111;
-        font-weight: bold;
-        border-radius: 10px;
-        font-size: 18px;
-        transition: transform 0.3s, box-shadow 0.3s;
-        box-shadow: 0 5px 15px rgba(140, 225, 221, 0.4);
-      }
-
-      .bottom-section a:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 8px 20px rgba(140, 225, 221, 0.6);
-      }
-
-      footer p {
-        margin: 5px 0;
-      }
-
-      footer span {
-        color: #c084fc;
-      }
-
-      .social-media {
-        display: flex;
-        justify-content: center;
-        margin-top: 10px;
-      }
-
-      .social-media a {
-        margin: 0 15px;
-        color: #c084fc;
-        font-size: 20px;
-        text-decoration: none;
-        transition: color 0.3s;
-      }
-
-      .social-media a:hover {
-        color: #8ce1dd;
-      }
-
-      /* Responsive adjustments for different screen sizes */
-      @media (max-width: 1024px) {
-        .main-content h1 {
-          font-size: 36px;
-        }
-
-        .main-content p {
-          font-size: 18px;
-        }
-
-        .button {
-          padding: 10px 20px;
-          font-size: 15px;
-        }
-
-        .slideshow-text {
-          font-size: 20px;
-        }
-
-        .slideshow-image {
-          max-width: 70%;
-        }
-
-        .content-heading {
-          font-size: 28px;
-        }
-
-        .bottom-section h3 {
-          font-size: 20px;
-        }
-      }
-
+      /* Responsive adjustments */
       @media (max-width: 768px) {
         header {
-          padding: 20px;
           flex-direction: column;
-        }
-
-        .container {
-          padding: 10px;
+          padding: 20px;
         }
 
         .main-content h1 {
@@ -359,20 +228,12 @@
           font-size: 14px;
         }
 
-        .slideshow-container {
-          padding: 10px;
-        }
-
         .slideshow-text {
           font-size: 16px;
         }
 
         .slideshow-image {
           max-width: 90%;
-        }
-
-        .content-links a {
-          font-size: 14px;
         }
       }
 
@@ -397,23 +258,6 @@
         .slideshow-image {
           max-width: 100%; /* Full width on mobile */
         }
-
-        .content-links a {
-          padding: 6px 12px;
-        }
-
-        .bottom-section h3 {
-          font-size: 16px;
-        }
-
-        footer p {
-          font-size: 10px;
-        }
-
-        .social-media a {
-          font-size: 14px;
-          margin: 0 8px;
-        }
       }
     </style>
 </head>
@@ -428,7 +272,7 @@
     <div class="container">
         <div class="main-content">
             <h1>Your <span>Game</span> <span>Development</span> journey starts here.</h1>
-            <p class="courier-text">Connect, collaborate, and create within a vibrant game development space. Discover projects and bring your ideas to life.</p>
+            <p>Connect, collaborate, and create within a vibrant game development space. Discover projects and bring your ideas to life.</p>
             <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
         </div>
         <div class="side-image">
@@ -455,64 +299,8 @@
             </div>
             <img src="Images/img3.png" class="slideshow-image" alt="Game Ideas and Inspiration">
         </div>
-        <!-- Slide 3 -->
-        <div class="mySlides">
-            <div class="slideshow-text">
-                <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
-            </div>
-            <img src="Images/img2.png" class="slideshow-image" alt="Game Development Events">
-        </div>
-        <!-- Slide 4 -->
-        <div class="mySlides">
-            <div class="slideshow-text">
-                <p><span>Share</span> projects, get feedback, and <span>invite</span> developers to <span>contribute</span>.</p>
-            </div>
-            <img src="Images/img1.png" class="slideshow-image" alt="Game Development Collaboration">
-        </div>
-        <!-- Slide 5 -->
-        <div class="mySlides">
-            <div class="slideshow-text">
-                <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration <span>invites</span>.</p>
-            </div>
-            <img src="Images/img5.png" class="slideshow-image" alt="Connect with Developers">
-        </div>
-
-        <!-- Navigation Arrows -->
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <!-- Dots/Indicators -->
-    <div class="dot-container">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
-
-    <!-- Content Heading -->
-    <h2 class="content-heading">Content</h2>
-    <div class="content-links">
-        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 1</a>
-        <a href="https://www.instagram.com/reel/DCLqEZOSVKO/" target="_blank">Instagram Reel 2</a>
-        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 3</a>
-    </div>
-
-    <!-- Bottom Section -->
-    <div class="bottom-section">
-        <h3>You've hit the bottom of the page!<br>Ready to level up?</h3>
-        <h3>Join PixL.</h3>
-        <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
-    </div>
-
-    <!-- Footer Section -->
-    <footer>
-        <p>© 2024 PixL. All Rights Reserved.</p>
-        <p>Developed by <span>Om Arora, Avaneesh Prabhu, Naksh Bablani, Lavanya Charan, Kashish Khattar, and Aditya Patil</span>.</p>
-    </footer>
-
-    <!-- Scripts -->
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -534,11 +322,7 @@
             for (i = 0; i < slides.length; i++) {
                 slides[i].style.display = "none";
             }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
             slides[slideIndex - 1].style.display = "flex";
-            dots[slideIndex - 1].className += " active";
         }
     </script>
 </body>
