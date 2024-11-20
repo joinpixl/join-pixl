@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>PixL Waitlist</title>
+    <link rel="icon" href="favicon.jpg" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Montserrat:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #1e1e1e;
+            color: #fff;
+            font-family: 'Press Start 2P', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+            opacity: 1;
+            transition: opacity 0.5s ease-in-out;
+        }
+
+        body.fade-out {
+            opacity: 0;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 60px;
+            background-color: #222;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            box-sizing: border-box;
+        }
+
+        .container {
+            width: 90%;
+            max-width: 700px;
+            background: #222;
+            padding: 50px;
+            border-radius: 20px;
+            box-shadow: 0 0 25px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            margin-top: 50px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        h2 {
+            color: #b78af6;
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .input-group {
+            position: relative;
+            margin-bottom: 25px;
+            width: 100%;
+        }
+
+        .input-group input {
+            width: 100%;
+            padding: 20px;
+            border: 2px solid #444;
+            border-radius: 15px;
+            background-color: #1e1e1e;
+            color: #fff;
+            font-size: 1.2rem;
+            outline: none;
+        }
+
+        .button {
+            background-color: #c084fc;
+            border: none;
+            padding: 20px 40px;
+            color: #111;
+            border-radius: 15px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: background-color 0.3s ease;
+            width: 100%;
+            margin-top: 30px;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .button:hover {
+            background-color: #a05cc3;
+        }
+
+        .confirmation-popup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #222;
+            border-radius: 20px;
+            padding: 30px;
+            width: 90%;
+            max-width: 500px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            z-index: 1000;
+        }
+
+        .confirmation-popup img {
+            width: 100px;
+            margin-bottom: 20px;
+        }
+
+        .confirmation-popup h3 {
+            color: #86efac;
+            margin-bottom: 15px;
+        }
+
+        .confirmation-popup p {
+            color: #bbb;
+            font-size: 1rem;
+            margin-bottom: 15px;
+        }
+
+        .overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        footer {
+            background-color: #222;
+            width: 100%;
+            padding: 15px;
+            text-align: center;
+            color: #aaa;
+            font-size: 0.8rem;
+            border-top: 2px solid #3e3e3e;
+            margin-top: auto;
+        }
+
+        footer span {
+            color: #c084fc;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Pix<span class="highlight">L</span>.</h1>
+    </header>
+
+    <div class="content">
+        <div class="container">
+            <h2>Join our waitlist below</h2>
+            <div class="line-divider"></div>
+            <form id="waitlistForm">
+                <div class="input-group">
+                    <input type="text" id="fullName" name="fullName" placeholder="Full name" required>
+                </div>
+                <div class="input-group">
+                    <input type="email" id="email" name="email" placeholder="Email" required>
+                </div>
+                <button type="submit" class="button">Join the waitlist →</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Confirmation Popup -->
+    <div class="overlay" id="overlay"></div>
+    <div class="confirmation-popup" id="confirmationPopup">
+        <img src="Images/tick.png" alt="Tick mark">
+        <h3>Congratulations!</h3>
+        <p>You have successfully been added to our waitlist.</p>
+        <p>We will be giving you timely updates on our progress.</p>
+    </div>
+
+    <footer>
+        <p>© 2024 PixL. All Rights Reserved.</p>
+        <p>Developed by Om Arora, Avaneesh Prabhu, Naksh Bablani, Lavanya Charan, Kashish Khattar, and Aditya Patil.</p>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const links = document.querySelectorAll('a');
+            links.forEach(link => {
+                link.addEventListener('click', function(event) {
+                    if (link.href && link.href.includes(location.hostname)) {
+                        event.preventDefault();
+                        document.body.classList.add('fade-out');
+                        setTimeout(() => {
+                            window.location.href = link.href;
+                        }, 500);
+                    }
+                });
+            });
+        });
+
+        document.getElementById('waitlistForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const email = document.getElementById('email').value.trim();
+            const emailPattern = /^[^@\s]+@(gmail\.com|outlook\.com|yahoo\.com)$/i;
+
+            if (fullName === '') {
+                alert('Please enter your full name.');
+                return;
+            }
+
+            if (!emailPattern.test(email)) {
+                alert('Please enter a valid email address ending with @gmail.com, @outlook.com, or @yahoo.com.');
+                return;
+            }
+
+            const data = {
+                data: {
+                    "Name": fullName,
+                    "Email": email
+                }
+            };
+
+            fetch('https://api.apispreadsheets.com/data/1wCZDoqEVgE32ZMA/', {
+                method: 'POST',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            }).then(response => {
+                if (response.status === 201) {
+                    document.getElementById('overlay').style.display = 'block';
+                    document.getElementById('confirmationPopup').style.display = 'block';
+                    document.getElementById('waitlistForm').reset();
+                } else {
+                    alert('There was an error submitting your data. Please try again.');
+                }
+            }).catch(error => {
+                console.error('Error:', error);
+                alert('There was an error submitting your data. Please try again.');
+            });
+        });
+
+        document.getElementById('overlay').addEventListener('click', function() {
+            document.getElementById('overlay').style.display = 'none';
+            document.getElementById('confirmationPopup').style.display = 'none';
+        });
+    </script>
+</body>
+</html>
