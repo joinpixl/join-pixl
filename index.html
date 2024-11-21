@@ -17,6 +17,50 @@
             scroll-behavior: smooth;
         }
 
+        /* Header Section */
+        header {
+            background-color: #222;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 1px solid #444;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            color: #c084fc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 14px;
+            color: #bbb;
+        }
+
+        .nav-links a {
+            color: inherit;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        /* Hero Section */
         .container {
             display: flex;
             justify-content: space-between;
@@ -90,31 +134,35 @@
         /* Slideshow Section */
         .slideshow-container {
             width: 100%;
-            max-height: 500px;
-            overflow: hidden;
-            background: linear-gradient(135deg, #561192, #741BC1);
-            margin: 60px auto;
-            border-radius: 20px;
+            height: 500px;
             display: flex;
-            align-items: center;
             justify-content: center;
+            align-items: center;
+            background-color: #222;
+            padding: 40px;
+            box-sizing: border-box;
         }
 
         .mySlides {
-            display: none;
+            width: 100%;
+            max-width: 1200px;
+            display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 50px;
-            border-radius: 20px;
-            animation: slide-in-up 1.5s;
+            gap: 40px;
+            background-color: #333;
+            border-radius: 15px;
+            overflow: hidden;
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .slideshow-text {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            flex: 1;
+            font-size: clamp(1.5rem, 2vw, 2.5rem);
             color: #fff;
+            font-weight: bold;
             line-height: 1.4;
-            font-weight: 600;
-            max-width: 50%;
         }
 
         .slideshow-text span {
@@ -122,72 +170,14 @@
         }
 
         .slideshow-image {
+            flex: 1;
             max-width: 100%;
-            max-height: 100%;
-            width: auto;
             height: auto;
             object-fit: cover;
-            border-radius: 15px;
+            border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
         }
 
-        .fade {
-            -webkit-animation-name: fade;
-            -webkit-animation-duration: 1.5s;
-            animation-name: fade;
-            animation-duration: 1.5s;
-        }
-
-        @-webkit-keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-
-        @keyframes fade {
-            from {opacity: .4} 
-            to {opacity: 1}
-        }
-
-        .prev, .next {
-            cursor: pointer;
-            position: absolute;
-            top: 50%;
-            width: auto;
-            padding: 16px;
-            margin-top: -22px;
-            color: white;
-            font-weight: bold;
-            font-size: 24px;
-            transition: 0.6s ease;
-            border-radius: 0 3px 3px 0;
-            user-select: none;
-        }
-
-        .next {
-            right: 0;
-            border-radius: 3px 0 0 3px;
-        }
-
-        .prev:hover, .next:hover {
-            background-color: rgba(0,0,0,0.8);
-        }
-
-        .dot {
-            cursor: pointer;
-            height: 18px;
-            width: 18px;
-            margin: 0 3px;
-            background-color: #bbb;
-            border-radius: 50%;
-            display: inline-block;
-            transition: background-color 0.6s ease;
-        }
-
-        .active, .dot:hover {
-            background-color: #717171;
-        }
-
-        /* Content Section */
         .content-heading {
             text-align: center;
             font-size: clamp(2.5rem, 4vw, 3rem);
@@ -196,145 +186,31 @@
             animation: color-change 6s infinite;
         }
 
-        @keyframes color-change {
-            0% { color: #7ED1C4; }
-            33% { color: #FFFFFF; }
-            66% { color: #9F54C8; }
-            100% { color: #7ED1C4; }
-        }
-
-        .content-links {
-            background-color: #9F54C8; 
-            padding: 30px;
-            border-radius: 10px;
-            margin-top: 20px;
-            text-align: center;
-        }
-
-        .content-links a {
-            display: inline-block;
-            margin: 10px;
-            font-size: 18px;
-            color: #fff;
-            text-decoration: none;
-            border: 2px solid #fff;
-            padding: 10px 20px;
-            border-radius: 5px;
-            transition: background-color 0.3s;
-        }
-
-        .content-links a:hover {
-            background-color: #7ED1C4;
-        }
-
-        .bottom-section {
-            background-color: rgba(127, 48, 195, 0.5); 
-            padding: 50px;
-            text-align: center;
-            color: #fff;
-            margin-top: 50px;
-            border-radius: 10px;
-        }
-
-        .bottom-section h3 {
-            font-size: clamp(1.5rem, 3vw, 2rem);
-            font-family: 'Courier Prime', monospace;
-            margin-bottom: 20px;
-        }
-
-        .bottom-section a {
-            text-decoration: none;
-            padding: 15px 30px;
-            background-color: #8ce1dd;
-            color: #111;
-            font-weight: bold;
-            border-radius: 8px;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .bottom-section a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
-        }
-
-        /* Footer Section */
-        footer {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            z-index: 10;
-        }
-
-        .social-media {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-end;
-        }
-
-        .social-icon {
-            display: block;
-            width: 40px;
-            height: 40px;
-            margin: 10px 0;
-            border-radius: 50%;
-            background-color: #111;
-            background-size: cover;
-            background-position: center;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .social-icon:hover {
-            transform: scale(1.2);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-        }
-
-        .linkedin {
-            background-image: url('https://icons.iconarchive.com/icons/martz90/circle/512/linkedin-icon.png');
-        }
-
-        .instagram {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-        }
-
-        .youtube {
-            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
-        }
-
         /* Responsive Design */
-        @media (max-width: 1200px) {
-            .main-content h1 {
-                font-size: 50px;
-            }
-            .main-content p {
-                font-size: 18px;
-            }
-            .side-image-img {
-                max-width: 60%;
-            }
-        }
-
         @media (max-width: 768px) {
-            .container {
+            .mySlides {
                 flex-direction: column;
+                align-items: center;
+                text-align: center;
                 padding: 20px;
             }
-            .main-content h1 {
-                font-size: 40px;
-                text-align: center;
+
+            .slideshow-text {
+                font-size: clamp(1rem, 3vw, 1.5rem);
+                margin-bottom: 20px;
             }
-            .main-content {
-                margin-left: 0;
-                text-align: center;
-            }
-            .side-image {
-                margin-top: 20px;
-            }
-            .side-image-img {
+
+            .slideshow-image {
                 max-width: 80%;
             }
-            .slideshow-text {
-                font-size: 28px;
+
+            .container {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .side-image-img {
+                max-width: 100%;
             }
         }
 
@@ -342,23 +218,25 @@
             .main-content h1 {
                 font-size: 32px;
             }
-            .main-content p {
-                font-size: 16px;
-            }
+
             .button {
                 padding: 10px 20px;
                 font-size: 14px;
-            }
-            .slideshow-image {
-                max-width: 100%;
-            }
-            .slideshow-text {
-                font-size: 20px;
             }
         }
     </style>
 </head>
 <body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Pix<span>L.</span></div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#content">Content</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
     <div class="container">
         <div class="main-content">
             <h1>Your <span>Game</span> <span>Development</span> journey starts here.</h1>
@@ -370,117 +248,35 @@
         </div>
     </div>
 
-    <h2 class="content-heading">Features of PixL</h2>
-
+    <!-- Slideshow Section -->
+    <h2 class="content-heading" id="features">Features of PixL</h2>
     <div class="slideshow-container">
-        <div class="mySlides fade">
+        <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
             </div>
             <img src="Images/whiteboard.png" class="slideshow-image" alt="Collaboration Tools">
         </div>
-        <div class="mySlides fade">
+        <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to <span>inspire</span>.</p>
             </div>
             <img src="Images/img3.png" class="slideshow-image" alt="Game Ideas and Inspiration">
         </div>
-        <div class="mySlides fade">
+        <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
             </div>
             <img src="Images/img2.png" class="slideshow-image" alt="Game Development Events">
         </div>
-        <div class="mySlides fade">
-            <div class="slideshow-text">
-                <p><span>Share</span> projects, get feedback, and <span>invite</span> developers to <span>contribute</span>.</p>
-            </div>
-            <img src="Images/img1.png" class="slideshow-image" alt="Game Development Collaboration">
-        </div>
-        <div class="mySlides fade">
-            <div class="slideshow-text">
-                <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration <span>invites</span>.</p>
-            </div>
-            <img src="Images/img5.png" class="slideshow-image" alt="Connect with Developers">
-        </div>
-
-        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
-        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <div style="text-align:center">
-        <span class="dot" onclick="currentSlide(1)"></span>
-        <span class="dot" onclick="currentSlide(2)"></span>
-        <span class="dot" onclick="currentSlide(3)"></span>
-        <span class="dot" onclick="currentSlide(4)"></span>
-        <span class="dot" onclick="currentSlide(5)"></span>
-    </div>
-
-    <h2 class="content-heading">Content</h2>
+    <!-- Content Section -->
+    <h2 class="content-heading" id="content">Content</h2>
     <div class="content-links">
         <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 1</a>
         <a href="https://www.instagram.com/reel/DCLqEZOSVKO/" target="_blank">Instagram Reel 2</a>
         <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 3</a>
     </div>
-
-    <div class="bottom-section">
-        <h3>You've hit the bottom of the page!<br>Ready to level up?</h3>
-        <h3>Join PixL.</h3>
-        <a href="#" class="button">Join our Waitlist</a>
-    </div>
-
-    <footer>
-        <div class="social-media">
-            <a href="https://www.linkedin.com/company/teampixl/posts/?feedView=all" target="_blank" class="social-icon linkedin"></a>
-            <a href="https://www.instagram.com/joinpixl/" target="_blank" class="social-icon instagram"></a>
-            <a href="https://www.youtube.com/@joinpixl" target="_blank" class="social-icon youtube"></a>
-        </div>
-    </footer>
-
-    <script>
-        let slideIndex = 0;
-        showSlides();
-
-        function showSlides() {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            slideIndex++;
-            if (slideIndex > slides.length) {slideIndex = 1}    
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "flex";  
-            dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 7000);
-        }
-
-        function plusSlides(n) {
-            showSlideManually(slideIndex += n);
-        }
-
-        function currentSlide(n) {
-            showSlideManually(slideIndex = n);
-        }
-
-        function showSlideManually(n) {
-            let i;
-            let slides = document.getElementsByClassName("mySlides");
-            let dots = document.getElementsByClassName("dot");
-            if (n > slides.length) {slideIndex = 1}    
-            if (n < 1) {slideIndex = slides.length}
-            for (i = 0; i < slides.length; i++) {
-                slides[i].style.display = "none";  
-            }
-            for (i = 0; i < dots.length; i++) {
-                dots[i].className = dots[i].className.replace(" active", "");
-            }
-            slides[slideIndex-1].style.display = "flex";  
-            dots[slideIndex-1].className += " active";
-        }
-    </script>
 </body>
 </html>
