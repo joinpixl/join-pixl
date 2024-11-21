@@ -8,293 +8,357 @@
     <link rel="icon" href="favicon.jpg" type="image/x-icon">
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
     <style>
-      body {
-    margin: 0;
-    font-family: 'Poppins', sans-serif;
-    background-color: #111;
-    color: #fff;
-    overflow-x: hidden;
-    scroll-behavior: smooth;
-}
+        body {
+            margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
 
-.container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 40px;
-    height: 100vh;
-    box-sizing: border-box;
-    animation: fade-in 2s;
-}
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 40px;
+            height: 100vh;
+            box-sizing: border-box;
+            animation: fade-in 2s;
+        }
 
-.main-content {
-    max-width: 600px;
-    animation: slide-in-left 1.5s;
-    margin-left: 20px;
-}
+        .main-content {
+            max-width: 600px;
+            animation: slide-in-left 1.5s;
+            margin-left: 20px;
+        }
 
-.main-content h1 {
-    font-size: 60px;
-    line-height: 1.2;
-    margin-bottom: 20px; /* Added margin to the heading */
-}
+        .main-content h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem); /* Responsive font size */
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
 
-.main-content h1 span {
-    color: #c084fc;
-}
+        .main-content h1 span {
+            color: #c084fc;
+        }
 
-.main-content p {
-    margin-top: 20px;
-    font-size: 20px; /* Adjusted font size */
-    color: #bbb;
-}
+        .main-content p {
+            margin-top: 20px;
+            font-size: 20px;
+            color: #bbb;
+        }
 
-.courier-text {
-    font-family: 'Courier Prime', monospace;
-}
+        .courier-text {
+            font-family: 'Courier Prime', monospace;
+        }
 
-.button {
-    margin-top: 30px;
-    display: inline-block;
-    padding: 15px 30px;
-    background-color: #8ce1dd;
-    color: #111;
-    text-decoration: none;
-    border-radius: 8px;
-    font-weight: bold;
-    font-size: 16px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .button {
+            margin-top: 30px;
+            display: inline-block;
+            padding: 15px 30px;
+            background-color: #8ce1dd;
+            color: #111;
+            text-decoration: none;
+            border-radius: 8px;
+            font-weight: bold;
+            font-size: 16px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.button:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
-}
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
+        }
 
-.side-image {
-    flex: 1;
-    height: 100%;
-    background-color: transparent;
-    animation: slide-in-right 1.5s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
+        .side-image {
+            flex: 1;
+            height: 100%;
+            background-color: transparent;
+            animation: slide-in-right 1.5s;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-.side-image-img {
-    max-width: 70%;
-    height: auto;
-    border-radius: 10px;
-}
+        .side-image-img {
+            max-width: 70%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-.slideshow-container {
-    max-width: 1700px;
-    position: relative;
-    margin: 60px auto;
-    border-radius: 20px;
-    overflow: hidden;
-    background: linear-gradient(135deg, #561192, #741BC1); /* Linear Gradient */
-    height: 500px; /* Added height for the slideshow */
-}
+        .slideshow-container {
+            max-width: 1700px;
+            position: relative;
+            margin: 60px auto;
+            border-radius: 20px;
+            overflow: hidden;
+            background: linear-gradient(135deg, #561192, #741BC1);
+            height: 500px;
+        }
 
-.mySlides {
-    display: none;
-    justify-content: space-between;
-    align-items: center;
-    padding: 50px;
-    border-radius: 20px;
-    animation: slide-in-up 1.5s;
-}
+        .mySlides {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            border-radius: 20px;
+            animation: slide-in-up 1.5s;
+        }
 
-.slideshow-text {
-    font-size: 36px;
-    color: #fff;
-    line-height: 1.4;
-    font-weight: 600;
-    max-width: 50%;
-}
+        .slideshow-text {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: #fff;
+            line-height: 1.4;
+            font-weight: 600;
+            max-width: 50%;
+        }
 
-.slideshow-text span {
-    color: #86efac;
-}
+        .slideshow-text span {
+            color: #86efac;
+        }
 
-.slideshow-image {
-    max-width: 45%;
-    border-radius: 15px;
-    box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
-}
+        .slideshow-image {
+            max-width: 45%;
+            border-radius: 15px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
 
-.fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
-}
+        .fade {
+            -webkit-animation-name: fade;
+            -webkit-animation-duration: 1.5s;
+            animation-name: fade;
+            animation-duration: 1.5s;
+        }
 
-@-webkit-keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
+        @-webkit-keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
 
-@keyframes fade {
-    from {opacity: .4} 
-    to {opacity: 1}
-}
+        @keyframes fade {
+            from {opacity: .4} 
+            to {opacity: 1}
+        }
 
-.prev, .next {
-    cursor: pointer;
-    position: absolute;
-    top: 50%;
-    width: auto;
-    padding: 16px;
-    margin-top: -22px;
-    color: white;
-    font-weight: bold;
-    font-size: 24px;
-    transition: 0.6s ease;
-    border-radius: 0 3px 3px 0;
-    user-select: none;
-}
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: white;
+            font-weight: bold;
+            font-size: 24px;
+            transition: 0.6s ease;
+            border-radius: 0 3px 3px 0;
+            user-select: none;
+        }
 
-.next {
-    right: 0;
-    border-radius: 3px 0 0 3px;
-}
+        .next {
+            right: 0;
+            border-radius: 3px 0 0 3px;
+        }
 
-.prev:hover, .next:hover {
-    background-color: rgba(0,0,0,0.8);
-}
+        .prev:hover, .next:hover {
+            background-color: rgba(0,0,0,0.8);
+        }
 
-.dot {
-    cursor: pointer;
-    height: 18px;
-    width: 18px;
-    margin: 0 3px;
-    background-color: #bbb;
-    border-radius: 50%;
-    display: inline-block;
-    transition: background-color 0.6s ease;
-}
+        .dot {
+            cursor: pointer;
+            height: 18px;
+            width: 18px;
+            margin: 0 3px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.6s ease;
+        }
 
-.active, .dot:hover {
-    background-color: #717171;
-}
+        .active, .dot:hover {
+            background-color: #717171;
+        }
 
-/* Content Section */
-.content-heading {
-    text-align: center;
-    font-size: 48px;
-    font-weight: bold;
-    margin-top: 50px;
-    animation: color-change 6s infinite;
-}
+        /* Content Section */
+        .content-heading {
+            text-align: center;
+            font-size: clamp(2.5rem, 4vw, 3rem);
+            font-weight: bold;
+            margin-top: 50px;
+            animation: color-change 6s infinite;
+        }
 
-@keyframes color-change {
-    0% { color: #7ED1C4; }
-    33% { color: #FFFFFF; }
-    66% { color: #9F54C8; }
-    100% { color: #7ED1C4; }
-}
+        @keyframes color-change {
+            0% { color: #7ED1C4; }
+            33% { color: #FFFFFF; }
+            66% { color: #9F54C8; }
+            100% { color: #7ED1C4; }
+        }
 
-.content-links {
-    background-color: #9F54C8; 
-    padding: 30px;
-    border-radius: 10px;
-    margin-top: 20px;
-    text-align: center;
-}
+        .content-links {
+            background-color: #9F54C8; 
+            padding: 30px;
+            border-radius: 10px;
+            margin-top: 20px;
+            text-align: center;
+        }
 
-.content-links a {
-    display: inline-block;
-    margin: 10px;
-    font-size: 18px;
-    color: #fff;
-    text-decoration: none;
-    border: 2px solid #fff;
-    padding: 10px 20px;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-}
+        .content-links a {
+            display: inline-block;
+            margin: 10px;
+            font-size: 18px;
+            color: #fff;
+            text-decoration: none;
+            border: 2px solid #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+        }
 
-.content-links a:hover {
-    background-color: #7ED1C4;
-}
+        .content-links a:hover {
+            background-color: #7ED1C4;
+        }
 
-.bottom-section {
-    background-color: rgba(127, 48, 195, 0.5); 
-    padding: 50px;
-    text-align: center;
-    color: #fff;
-    margin-top: 50px;
-    border-radius: 10px;
-}
+        .bottom-section {
+            background-color: rgba(127, 48, 195, 0.5); 
+            padding: 50px;
+            text-align: center;
+            color: #fff;
+            margin-top: 50px;
+            border-radius: 10px;
+        }
 
-.bottom-section h3 {
-    font-size: 30px;
-    font-family: 'Courier Prime', monospace;
-    margin-bottom: 20px;
-}
+        .bottom-section h3 {
+            font-size: clamp(1.5rem, 3vw, 2rem);
+            font-family: 'Courier Prime', monospace;
+            margin-bottom: 20px;
+        }
 
-.bottom-section a {
-    text-decoration: none;
-    padding: 15px 30px;
-    background-color: #8ce1dd;
-    color: #111;
-    font-weight: bold;
-    border-radius: 8px;
-    font-size: 18px;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .bottom-section a {
+            text-decoration: none;
+            padding: 15px 30px;
+            background-color: #8ce1dd;
+            color: #111;
+            font-weight: bold;
+            border-radius: 8px;
+            font-size: 18px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.bottom-section a:hover {
-    transform: scale(1.05);
-    box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
-}
+        .bottom-section a:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
+        }
 
-/* Footer Section */
-footer {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 10;
-}
+        /* Footer Section */
+        footer {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 10;
+        }
 
-/* Social Media Icons */
-.social-media {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-}
+        /* Social Media Icons */
+        .social-media {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+        }
 
-.social-icon {
-    display: block;
-    width: 40px;
-    height: 40px;
-    margin: 10px 0;
-    border-radius: 50%;
-    background-color: #111;
-    background-size: cover;
-    background-position: center;
-    transition: transform 0.3s, box-shadow 0.3s;
-}
+        .social-icon {
+            display: block;
+            width: 40px;
+            height: 40px;
+            margin: 10px 0;
+            border-radius: 50%;
+            background-color: #111;
+            background-size: cover;
+            background-position: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
 
-.social-icon:hover {
-    transform: scale(1.2);
-    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
-}
+        .social-icon:hover {
+            transform: scale(1.2);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.6);
+        }
 
-.linkedin {
-    background-image: url('https://icons.iconarchive.com/icons/martz90/circle/512/linkedin-icon.png');
-}
+        .linkedin {
+            background-image: url('https://icons.iconarchive.com/icons/martz90/circle/512/linkedin-icon.png');
+        }
 
-.instagram {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
-}
+        .instagram {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png');
+        }
 
-.youtube {
-    background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
-}
+        .youtube {
+            background-image: url('https://upload.wikimedia.org/wikipedia/commons/4/42/YouTube_icon_%282013-2017%29.png');
+        }
 
+        /* Responsive Design */
+        @media (max-width: 1200px) {
+            .main-content h1 {
+                font-size: 50px;
+            }
+            .main-content p {
+                font-size: 18px;
+            }
+            .side-image-img {
+                max-width: 60%;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 20px;
+            }
+            .main-content h1 {
+                font-size: 40px;
+                text-align: center;
+            }
+            .main-content {
+                margin-left: 0;
+                text-align: center;
+            }
+            .side-image {
+                margin-top: 20px;
+            }
+            .side-image-img {
+                max-width: 80%;
+            }
+            .slideshow-text {
+                font-size: 28px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .main-content h1 {
+                font-size: 32px;
+            }
+            .main-content p {
+                font-size: 16px;
+            }
+            .button {
+                padding: 10px 20px;
+                font-size: 14px;
+            }
+            .slideshow-image {
+                max-width: 100%;
+            }
+            .slideshow-text {
+                font-size: 20px;
+            }
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .slideshow-container {
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -305,15 +369,12 @@ footer {
             <a href="#" class="button">Join our Waitlist</a>
         </div>
         <div class="side-image">
-            <img src="Images/main.jpg" alt="Game Development Image" class="side-image-img" width="700" height="500">
+            <img src="Images/main.jpg" alt="Game Development Image" class="side-image-img">
         </div>
-        
     </div>
 
-    <!-- Features Heading -->
     <h2 class="content-heading">Features of PixL</h2>
 
-    <!-- Slideshow Section -->
     <div class="slideshow-container">
         <div class="mySlides fade">
             <div class="slideshow-text">
@@ -346,12 +407,10 @@ footer {
             <img src="Images/img5.png" class="slideshow-image" alt="Connect with Developers">
         </div>
 
-        <!-- Next and previous buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
         <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <!-- Dots to indicate current slide -->
     <div style="text-align:center">
         <span class="dot" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
@@ -360,7 +419,6 @@ footer {
         <span class="dot" onclick="currentSlide(5)"></span>
     </div>
 
-    <!-- Content Section -->
     <h2 class="content-heading">Content</h2>
     <div class="content-links">
         <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 1</a>
@@ -368,14 +426,12 @@ footer {
         <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 3</a>
     </div>
 
-    <!-- Bottom Section (New part) -->
     <div class="bottom-section">
         <h3>You've hit the bottom of the page!<br>Ready to level up?</h3>
         <h3>Join PixL.</h3>
         <a href="#" class="button">Join our Waitlist</a>
     </div>
 
-    <!-- Footer Section -->
     <footer>
         <div class="social-media">
             <a href="https://www.linkedin.com/company/teampixl/posts/?feedView=all" target="_blank" class="social-icon linkedin"></a>
@@ -402,7 +458,7 @@ footer {
             }
             slides[slideIndex-1].style.display = "flex";  
             dots[slideIndex-1].className += " active";
-            setTimeout(showSlides, 7000); // Change image every 7 seconds
+            setTimeout(showSlides, 7000);
         }
 
         function plusSlides(n) {
