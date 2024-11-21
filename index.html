@@ -118,15 +118,14 @@
         .side-image {
             flex: 1;
             height: 100%;
-            background-color: transparent;
             animation: slide-in-right 1.5s;
             display: flex;
             justify-content: center;
             align-items: center;
         }
 
-        .side-image-img {
-            max-width: 70%;
+        .side-image img {
+            max-width: 100%;
             height: auto;
             border-radius: 10px;
         }
@@ -137,7 +136,7 @@
             max-width: 1200px;
             margin: 40px auto;
             position: relative;
-            background: linear-gradient(135deg, #AC5CF1, #B990FF); /* Gradient background */
+            background: linear-gradient(135deg, #AC5CF1, #B990FF);
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
@@ -174,6 +173,90 @@
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navigation Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            user-select: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dots Navigation */
+        .dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Content Section */
+        .content {
+            background: linear-gradient(135deg, #561192, #741BC1);
+            padding: 40px 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: #fff;
+        }
+
+        .content-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #8ce1dd;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
         }
 
         /* Final Section */
@@ -225,8 +308,9 @@
                 margin-bottom: 20px;
             }
 
-            .slideshow-image {
+            .side-image img {
                 max-width: 100%;
+                height: auto;
             }
         }
     </style>
@@ -249,8 +333,41 @@
             <a href="#" class="button">Join our Waitlist</a>
         </div>
         <div class="side-image">
-            <img src="Images/main.jpg" alt="Game Development Image" class="side-image-img">
+            <img src="Images/main.jpg" alt="Game Development Image">
         </div>
+    </div>
+
+    <!-- Slideshow Section -->
+    <h2 class="content-heading" id="features">Features of PixL</h2>
+    <div class="slideshow-container">
+        <div class="mySlides active">
+            <div class="slideshow-text">
+                <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
+            </div>
+            <img src="Images/whiteboard.png" alt="Collaboration Tools" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to <span>inspire</span>.</p>
+            </div>
+            <img src="Images/img3.png" alt="Game Ideas and Inspiration" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
+            </div>
+            <img src="Images/img2.png" alt="Game Development Events" class="slideshow-image">
+        </div>
+        <!-- Navigation Buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
+    </div>
+
+    <!-- Dots Navigation -->
+    <div class="dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
 
     <!-- Content Section -->
