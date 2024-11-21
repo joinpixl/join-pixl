@@ -134,32 +134,31 @@
         /* Slideshow Section */
         .slideshow-container {
             width: 100%;
-            height: 500px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
+            max-width: 1200px;
+            margin: 40px auto;
+            position: relative;
             background-color: #222;
-            padding: 40px;
-            box-sizing: border-box;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
         }
 
         .mySlides {
-            width: 100%;
-            max-width: 1200px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            gap: 40px;
-            background-color: #333;
-            border-radius: 15px;
-            overflow: hidden;
+            display: none;
             padding: 20px;
+            text-align: center;
             box-sizing: border-box;
         }
 
+        .mySlides.active {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 20px;
+        }
+
         .slideshow-text {
-            flex: 1;
-            font-size: clamp(1.5rem, 2vw, 2.5rem);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
             color: #fff;
             font-weight: bold;
             line-height: 1.4;
@@ -170,58 +169,70 @@
         }
 
         .slideshow-image {
-            flex: 1;
-            max-width: 100%;
+            max-width: 80%;
             height: auto;
-            object-fit: cover;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
         }
 
-        .content-heading {
-            text-align: center;
-            font-size: clamp(2.5rem, 4vw, 3rem);
+        /* Navigation Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
             font-weight: bold;
-            margin-top: 50px;
-            animation: color-change 6s infinite;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            user-select: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dots Navigation */
+        .dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #717171;
         }
 
         /* Responsive Design */
         @media (max-width: 768px) {
-            .mySlides {
-                flex-direction: column;
-                align-items: center;
-                text-align: center;
-                padding: 20px;
-            }
-
             .slideshow-text {
                 font-size: clamp(1rem, 3vw, 1.5rem);
-                margin-bottom: 20px;
             }
 
             .slideshow-image {
-                max-width: 80%;
-            }
-
-            .container {
-                flex-direction: column;
-                text-align: center;
-            }
-
-            .side-image-img {
                 max-width: 100%;
-            }
-        }
-
-        @media (max-width: 480px) {
-            .main-content h1 {
-                font-size: 32px;
-            }
-
-            .button {
-                padding: 10px 20px;
-                font-size: 14px;
             }
         }
     </style>
@@ -251,32 +262,65 @@
     <!-- Slideshow Section -->
     <h2 class="content-heading" id="features">Features of PixL</h2>
     <div class="slideshow-container">
-        <div class="mySlides">
+        <div class="mySlides active">
             <div class="slideshow-text">
                 <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
             </div>
-            <img src="Images/whiteboard.png" class="slideshow-image" alt="Collaboration Tools">
+            <img src="Images/whiteboard.png" alt="Collaboration Tools" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to <span>inspire</span>.</p>
             </div>
-            <img src="Images/img3.png" class="slideshow-image" alt="Game Ideas and Inspiration">
+            <img src="Images/img3.png" alt="Game Ideas and Inspiration" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
             </div>
-            <img src="Images/img2.png" class="slideshow-image" alt="Game Development Events">
+            <img src="Images/img2.png" alt="Game Development Events" class="slideshow-image">
         </div>
+        <!-- Navigation Buttons -->
+        <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
+        <a class="next" onclick="plusSlides(1)">&#10095;</a>
     </div>
 
-    <!-- Content Section -->
-    <h2 class="content-heading" id="content">Content</h2>
-    <div class="content-links">
-        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 1</a>
-        <a href="https://www.instagram.com/reel/DCLqEZOSVKO/" target="_blank">Instagram Reel 2</a>
-        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank">Instagram Reel 3</a>
+    <!-- Dots Navigation -->
+    <div class="dots">
+        <span class="dot active" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
     </div>
+
+    <script>
+        let slideIndex = 1;
+
+        function plusSlides(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            let slides = document.getElementsByClassName("mySlides");
+            let dots = document.getElementsByClassName("dot");
+
+            if (n > slides.length) slideIndex = 1;
+            if (n < 1) slideIndex = slides.length;
+
+            for (let i = 0; i < slides.length; i++) {
+                slides[i].classList.remove("active");
+            }
+
+            for (let i = 0; i < dots.length; i++) {
+                dots[i].classList.remove("active");
+            }
+
+            slides[slideIndex - 1].classList.add("active");
+            dots[slideIndex - 1].classList.add("active");
+        }
+    </script>
 </body>
 </html>
