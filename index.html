@@ -141,23 +141,23 @@
             border-radius: 15px;
             overflow: hidden;
             box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
         }
 
         .mySlides {
             display: none;
-            padding: 20px;
-            text-align: center;
-            box-sizing: border-box;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
         }
 
         .mySlides.active {
             display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 20px;
         }
 
         .slideshow-text {
+            flex: 1;
             font-size: clamp(1.5rem, 3vw, 2.5rem);
             color: #fff;
             font-weight: bold;
@@ -169,7 +169,8 @@
         }
 
         .slideshow-image {
-            max-width: 80%;
+            flex: 1;
+            max-width: 100%;
             height: auto;
             border-radius: 10px;
             box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
@@ -225,10 +226,49 @@
             background-color: #717171;
         }
 
+        /* Content Section */
+        .content {
+            background: linear-gradient(135deg, #561192, #741BC1); /* Gradient background */
+            padding: 40px 20px;
+            margin: 0;
+            text-align: center;
+        }
+
+        .content h2 {
+            margin-bottom: 20px;
+            font-size: clamp(2rem, 3vw, 2.5rem);
+            color: #fff;
+        }
+
+        .content-button {
+            display: inline-block;
+            margin: 10px;
+            padding: 15px 30px;
+            font-size: 18px;
+            color: #fff;
+            background-color: #8ce1dd;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .mySlides {
+                flex-direction: column;
+                text-align: center;
+            }
+
             .slideshow-text {
-                font-size: clamp(1rem, 3vw, 1.5rem);
+                margin-bottom: 20px;
             }
 
             .slideshow-image {
@@ -290,6 +330,14 @@
         <span class="dot active" onclick="currentSlide(1)"></span>
         <span class="dot" onclick="currentSlide(2)"></span>
         <span class="dot" onclick="currentSlide(3)"></span>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content" id="content">
+        <h2>Check Out Our Instagram Reels</h2>
+        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank" class="content-button">Reel 1</a>
+        <a href="https://www.instagram.com/reel/DCLqEZOSVKO/" target="_blank" class="content-button">Reel 2</a>
+        <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank" class="content-button">Reel 3</a>
     </div>
 
     <script>
