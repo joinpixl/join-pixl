@@ -117,7 +117,6 @@
 
         .side-image {
             flex: 1;
-            height: 100%;
             animation: slide-in-right 1.5s;
             display: flex;
             justify-content: center;
@@ -259,44 +258,6 @@
             box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
         }
 
-        /* Final Section */
-        .final-section {
-            background-color: #381070;
-            color: #fff;
-            text-align: center;
-            padding: 40px 20px;
-            margin-top: 40px;
-            border-radius: 15px;
-        }
-
-        .final-section h2 {
-            font-size: clamp(2rem, 3vw, 2.5rem);
-            font-weight: bold;
-        }
-
-        .final-section p {
-            margin: 20px 0;
-            font-size: 1.2rem;
-            font-family: 'Courier Prime', monospace;
-        }
-
-        .final-section a {
-            display: inline-block;
-            padding: 15px 30px;
-            background-color: #8ce1dd;
-            color: #111;
-            text-decoration: none;
-            border-radius: 8px;
-            font-weight: bold;
-            font-size: 18px;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .final-section a:hover {
-            transform: scale(1.05);
-            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
-        }
-
         /* Responsive Design */
         @media (max-width: 768px) {
             .mySlides {
@@ -342,21 +303,21 @@
     <div class="slideshow-container">
         <div class="mySlides active">
             <div class="slideshow-text">
+                <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to inspire.</p>
+            </div>
+            <img src="Images/image1.png" alt="Game Ideas and Inspiration" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration invites.</p>
+            </div>
+            <img src="Images/image2.png" alt="Connect with Developers" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
                 <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
             </div>
-            <img src="Images/whiteboard.png" alt="Collaboration Tools" class="slideshow-image">
-        </div>
-        <div class="mySlides">
-            <div class="slideshow-text">
-                <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to <span>inspire</span>.</p>
-            </div>
-            <img src="Images/img3.png" alt="Game Ideas and Inspiration" class="slideshow-image">
-        </div>
-        <div class="mySlides">
-            <div class="slideshow-text">
-                <p><span>Find</span> upcoming events, workshops, and <span>participant</span> info in <span>real-time</span>.</p>
-            </div>
-            <img src="Images/img2.png" alt="Game Development Events" class="slideshow-image">
+            <img src="Images/image3.png" alt="Collaboration Tools" class="slideshow-image">
         </div>
         <!-- Navigation Buttons -->
         <a class="prev" onclick="plusSlides(-1)">&#10094;</a>
@@ -376,13 +337,6 @@
         <a href="https://www.instagram.com/reel/DBjQjgQSy0l/" target="_blank" class="content-button">Reel 1</a>
         <a href="https://www.instagram.com/reel/DCR5S88MtzE/" target="_blank" class="content-button">Reel 2</a>
         <a href="https://www.instagram.com/reel/DCUYPoDMPkP/" target="_blank" class="content-button">Reel 3</a>
-    </div>
-
-    <!-- Final Section -->
-    <div class="final-section">
-        <h2>You've hit the bottom of the page!</h2>
-        <p>Ready to <span style="color: #86efac;">level up?</span> Join PixL.</p>
-        <a href="#" class="button">Join our Waitlist</a>
     </div>
 
     <script>
