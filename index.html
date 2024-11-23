@@ -8,6 +8,430 @@
     <style>
         body {
             margin: 0;
+            font-family: 'Poppins', sans-serif;
+            background-color: #111;
+            color: #fff;
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 30px;
+            background-color: #111;
+            border-bottom: 1px solid #333;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .logo {
+            font-size: 28px;
+            font-weight: bold;
+            color: #fff;
+            text-transform: uppercase;
+        }
+
+        .logo span {
+            color: #c084fc;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 20px;
+            font-size: 16px;
+        }
+
+        .nav-links a {
+            color: #bbb;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #c084fc;
+        }
+
+        /* Hero Section */
+        .hero-section {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 50px;
+            height: calc(100vh - 60px);
+            box-sizing: border-box;
+        }
+
+        .text-content {
+            max-width: 50%;
+        }
+
+        .text-content h1 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 50px;
+            line-height: 1.2;
+            margin-bottom: 20px;
+            color: #fff;
+        }
+
+        .text-content h1 span {
+            color: #c084fc;
+        }
+
+        .text-content p {
+            font-family: 'Courier Prime', monospace;
+            font-size: 26px;
+            line-height: 1.6;
+            color: #bbb;
+            margin-bottom: 30px;
+        }
+
+        .button {
+            font-family: 'Poppins', sans-serif;
+            padding: 20px 40px;
+            background-color: #8ce1dd;
+            color: #111;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            border-radius: 10px;
+            display: inline-block;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .button:hover {
+            transform: scale(1.05);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
+        }
+
+        .image-container {
+            flex: 1;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+        }
+
+        .image-container img {
+            max-width: 90%;
+            height: auto;
+            display: block;
+        }
+
+        /* Slideshow Section */
+        .slideshow-container {
+            width: 100%;
+            max-width: 1200px;
+            margin: 40px auto;
+            position: relative;
+            background: linear-gradient(135deg, #AC5CF1, #B990FF);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .mySlides {
+            display: none;
+            justify-content: space-between;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .mySlides.active {
+            display: flex;
+        }
+
+        .slideshow-text {
+            flex: 1;
+            font-family: 'Poppins', sans-serif;
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            color: #fff;
+            font-weight: bold;
+            line-height: 1.4;
+        }
+
+        .slideshow-text span {
+            color: #86efac;
+        }
+
+        .slideshow-image {
+            flex: 1;
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+        }
+
+        /* Navigation Buttons */
+        .prev, .next {
+            cursor: pointer;
+            position: absolute;
+            top: 50%;
+            width: auto;
+            padding: 16px;
+            margin-top: -22px;
+            color: #fff;
+            font-weight: bold;
+            font-size: 18px;
+            transition: background-color 0.3s;
+            user-select: none;
+            border-radius: 50%;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        .prev {
+            left: 15px;
+        }
+
+        .next {
+            right: 15px;
+        }
+
+        .prev:hover, .next:hover {
+            background-color: rgba(0, 0, 0, 0.8);
+        }
+
+        /* Dots Navigation */
+        .dots {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .dot {
+            cursor: pointer;
+            height: 12px;
+            width: 12px;
+            margin: 0 5px;
+            background-color: #bbb;
+            border-radius: 50%;
+            display: inline-block;
+            transition: background-color 0.3s;
+        }
+
+        .dot.active, .dot:hover {
+            background-color: #717171;
+        }
+
+        /* Content Section */
+        .content-section {
+            background-color: #6a0dad;
+            padding: 50px;
+            text-align: center;
+        }
+
+        .content-section h2 {
+            font-size: 36px;
+            color: #fff;
+            margin-bottom: 20px;
+        }
+
+        .content-section .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .content-section .button {
+            font-size: 18px;
+            padding: 15px 30px;
+            background-color: #c084fc;
+            color: #111;
+            text-decoration: none;
+            font-weight: bold;
+            border-radius: 8px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .content-section .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(192, 132, 252, 0.4);
+        }
+
+        /* Bottom Section */
+        .bottom-section {
+            background-color: #4b0082;
+            color: #fff;
+            padding: 40px;
+            text-align: center;
+            border-radius: 15px;
+            margin: 40px 20px;
+            font-family: 'Courier Prime', monospace;
+        }
+
+        .bottom-section h2 {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+
+        .bottom-section h2 span {
+            color: #86efac;
+        }
+
+        .bottom-section .button {
+            margin-top: 20px;
+            padding: 15px 30px;
+            font-size: 18px;
+            background-color: #8ce1dd;
+            color: #111;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .bottom-section .button:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 15px rgba(140, 225, 221, 0.4);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .content-section .button-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+
+            .hero-section {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .text-content {
+                max-width: 100%;
+            }
+
+            .image-container img {
+                max-width: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <div class="logo">Pix<span>L</span>.</div>
+        <nav class="nav-links">
+            <a href="#features">Features</a>
+            <a href="#content">Content</a>
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="text-content">
+            <h1>Your <span>Game Development</span> journey starts here.</h1>
+            <p>Connect, collaborate, and create within a vibrant game development space. Discover projects and bring your ideas to life.</p>
+            <a href="joinwaitlist.html">Join our Waitlist</a>
+        </div>
+        <div class="image-container">
+            <img src="Images/main.jpg" alt="Laptop Image">
+        </div>
+    </div>
+
+    <!-- Slideshow Section -->
+    <h2 class="content-heading" id="features">Features of PixL</h2>
+    <div class="slideshow-container">
+        <div class="mySlides active">
+            <div class="slideshow-text">
+                <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to inspire.</p>
+            </div>
+            <img src="Images/img1.png" alt="Game Ideas and Inspiration" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration invites.</p>
+            </div>
+            <img src="Images/img2.png" alt="Connect with Developers" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
+            </div>
+            <img src="Images/img3.png" alt="Collaboration Tools" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Find</span> upcoming events, workshops, and <span>real-time</span> participant info.</p>
+            </div>
+            <img src="Images/img2.png" alt="Events and Workshops" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Discover</span> a curated library of resources, tutorials, and <span>tools</span>.</p>
+            </div>
+            <img src="Images/img5.png" alt="Game Development Resources" class="slideshow-image">
+        </div>
+
+        <!-- Navigation Buttons -->
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+    <!-- Content Section -->
+    <div class="content-section" id="content">
+        <h2>Discover Awesome Content</h2>
+        <div class="button-container">
+            <a href="https://www.instagram.com/reel/DBjQjgQSy0l/?utm_source=ig_web_copy_link" target="_blank" class="button">Reel 1</a>
+            <a href="https://www.instagram.com/reel/DCR5S88MtzE/?utm_source=ig_web_copy_link" target="_blank" class="button">Reel 2</a>
+            <a href="https://www.instagram.com/reel/DCUYPoDMPkP/?utm_source=ig_web_copy_link" target="_blank" class="button">Reel 3</a>
+        </div>
+    </div>
+
+    <!-- Bottom Section -->
+    <div class="bottom-section">
+        <h2>You've hit the bottom of the page! <br> Ready to <span>level up</span>?<br>Join Pix<span>L</span>.</h2>
+        <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.querySelectorAll(".mySlides");
+            const dots = document.querySelectorAll(".dot");
+
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+
+            slides.forEach(slide => slide.style.display = "none");
+            dots.forEach(dot => dot.classList.remove("active"));
+
+            slides[slideIndex - 1].style.display = "flex";
+            dots[slideIndex - 1].classList.add("active");
+        }
+    </script>
+</body>
+</html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PixL - Game Development</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
             font-family: 'Poppins', sans-serif; /* Default font is Poppins */
             background-color: #111;
             color: #fff;
