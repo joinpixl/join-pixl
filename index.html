@@ -3,10 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <!-- Viewport Meta Tag -->
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Title -->
     <title>PixL - Game Development</title>
+
+    <!-- Favicon -->
     <link rel="icon" href="favicon.jpg" type="image/x-icon">
+
+    <!-- Google Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Courier+Prime:wght@400&display=swap" rel="stylesheet">
+
+    <!-- Styles -->
     <style>
         body {
             margin: 0;
@@ -127,11 +137,28 @@
             border-radius: 10px;
         }
 
+        /* Slider Title Styling */
+        .slider-title {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-top: 10px; /* Further decreased margin-top to reduce gap */
+            margin-bottom: 20px;
+            animation: colorChange 3s infinite;
+        }
+
+        /* Keyframes for Color Change Animation */
+        @keyframes colorChange {
+            0%   { color: #7ED1C4; }
+            33%  { color: #9F54C8; }
+            66%  { color: #FFFFFF; }
+            100% { color: #7ED1C4; }
+        }
+
         /* Slideshow Section */
         .slideshow-container {
             width: 100%;
             max-width: 1200px;
-            margin: 40px auto;
+            margin: 0 auto 40px;
             position: relative;
             background: linear-gradient(135deg, #AC5CF1, #B990FF);
             border-radius: 15px;
@@ -222,8 +249,55 @@
             background-color: #717171;
         }
 
+        /* Content Section */
+        .content-section {
+            background-color: #9F54C8; /* Purple background */
+            padding: 40px 20px;
+            text-align: center;
+            color: #fff;
+        }
+
+        .content-section h2 {
+            font-size: 2rem;
+            margin-bottom: 30px;
+        }
+
+        .content-section .buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .content-button {
+            background-color: #7ED1C4;
+            color: #111;
+            padding: 15px 25px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .content-button:hover {
+            background-color: #86efac;
+            transform: scale(1.05);
+        }
+
         /* Responsive Design */
         @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                align-items: flex-start;
+                padding: 20px;
+                height: auto;
+            }
+
+            .side-image {
+                margin-top: 20px;
+                width: 100%;
+            }
+
             .mySlides {
                 flex-direction: column;
                 text-align: center;
@@ -236,6 +310,15 @@
             .side-image img {
                 max-width: 100%;
                 height: auto;
+            }
+
+            .content-section h2 {
+                font-size: 1.5rem;
+            }
+
+            .content-section .buttons {
+                flex-direction: column;
+                gap: 15px;
             }
         }
     </style>
@@ -255,14 +338,19 @@
         <div class="main-content">
             <h1>Your <span>Game</span> <span>Development</span> journey starts here.</h1>
             <p class="courier-text">Connect, collaborate, and create within a vibrant game development space. Discover projects and bring your ideas to life.</p>
-            <a href="#" class="button">Join our Waitlist</a>
+            <a href="joinwaitlist.html" class="button">Join our Waitlist</a>
         </div>
         <div class="side-image">
             <img src="Images/main.jpg" alt="Game Development Image">
         </div>
     </div>
 
+    <!-- Title Above Slideshow -->
+    <h2 class="slider-title">Features of Pixl</h2>
+
+    <!-- Slideshow Section -->
     <div class="slideshow-container">
+        <!-- Existing slideshow content -->
         <div class="mySlides active">
             <div class="slideshow-text">
                 <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to inspire.</p>
@@ -285,7 +373,7 @@
             <div class="slideshow-text">
                 <p><span>Find</span> upcoming events, workshops, and <span>real-time</span> participant info.</p>
             </div>
-            <img src="Images/img2.png" alt="Events and Workshops" class="slideshow-image">
+            <img src="Images/img4.png" alt="Events and Workshops" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
@@ -299,6 +387,43 @@
         <a class="next" onclick="changeSlide(1)">&#10095;</a>
     </div>
 
+    <!-- Dots Navigation -->
+    <div class="dots">
+        <span class="dot" onclick="currentSlide(1)"></span>
+        <span class="dot" onclick="currentSlide(2)"></span>
+        <span class="dot" onclick="currentSlide(3)"></span>
+        <span class="dot" onclick="currentSlide(4)"></span>
+        <span class="dot" onclick="currentSlide(5)"></span>
+    </div>
+
+        <!-- Content Section -->
+        <div class="content-section" style="margin-bottom: 40px;">
+            <h2>Check out some of our content</h2>
+            <div class="buttons">
+                <a href="https://www.instagram.com/reel/REEL_ID1/" class="content-button" target="_blank">Watch Reel 1</a>
+                <a href="https://www.instagram.com/reel/REEL_ID2/" class="content-button" target="_blank">Watch Reel 2</a>
+                <a href="https://www.instagram.com/reel/REEL_ID3/" class="content-button" target="_blank">Watch Reel 3</a>
+            </div>
+        </div>
+    
+        <!-- Final Section -->
+        <div style="background-color: #4B0082; color: #FFFFFF; text-align: center; padding: 60px 20px; margin-top: 70px;">
+            <h2 style="font-size: 2rem; margin-bottom: 20px; font-family: 'Courier Prime', monospace;">
+                You've hit the bottom of the page! <br> 
+                Ready to <span style="color: #8ce1dd; text-decoration: underline;">level up?</span><br> 
+                Join Pix<span style="color: #8ce1dd;">L.</span>
+            </h2>
+            <a href="joinwaitlist.html" 
+               style="display: inline-block; padding: 15px 30px; background-color: #8ce1dd; color: #111; 
+                      text-decoration: none; border-radius: 8px; font-weight: bold; font-size: 1rem; 
+                      transition: transform 0.3s, box-shadow 0.3s;"
+               onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 4px 15px rgba(140, 225, 221, 0.4)';" 
+               onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='none';">
+                Join our Waitlist
+            </a>
+        </div>
+    
+    <!-- JavaScript -->
     <script>
         let slideIndex = 1;
         showSlides(slideIndex);
@@ -325,3 +450,5 @@
             dots[slideIndex - 1].classList.add("active");
         }
     </script>
+</body>
+</html>
