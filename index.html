@@ -262,29 +262,66 @@
         </div>
     </div>
 
-    <!-- Slideshow Section -->
-    <h2 class="content-heading" id="features">Features of PixL</h2>
     <div class="slideshow-container">
         <div class="mySlides active">
             <div class="slideshow-text">
                 <p><span>Explore</span> game ideas, dev-logs, and <span>trending</span> content to inspire.</p>
             </div>
-            <img src="Images/image1.png" alt="Game Ideas and Inspiration" class="slideshow-image">
+            <img src="Images/img1.png" alt="Game Ideas and Inspiration" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Connect</span> with developers, view profiles, and <span>send</span> collaboration invites.</p>
             </div>
-            <img src="Images/image2.png" alt="Connect with Developers" class="slideshow-image">
+            <img src="Images/img2.png" alt="Connect with Developers" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Collaborate</span> using a shared whiteboard and <span>manage</span> project <span>tasks</span>.</p>
             </div>
-            <img src="Images/image3.png" alt="Collaboration Tools" class="slideshow-image">
+            <img src="Images/img3.png" alt="Collaboration Tools" class="slideshow-image">
         </div>
         <div class="mySlides">
             <div class="slideshow-text">
                 <p><span>Find</span> upcoming events, workshops, and <span>real-time</span> participant info.</p>
             </div>
-            <img src="Images/image4.png" alt="
+            <img src="Images/img2.png" alt="Events and Workshops" class="slideshow-image">
+        </div>
+        <div class="mySlides">
+            <div class="slideshow-text">
+                <p><span>Discover</span> a curated library of resources, tutorials, and <span>tools</span>.</p>
+            </div>
+            <img src="Images/img5.png" alt="Game Development Resources" class="slideshow-image">
+        </div>
+
+        <!-- Navigation Buttons -->
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+    </div>
+
+    <script>
+        let slideIndex = 1;
+        showSlides(slideIndex);
+
+        function changeSlide(n) {
+            showSlides(slideIndex += n);
+        }
+
+        function currentSlide(n) {
+            showSlides(slideIndex = n);
+        }
+
+        function showSlides(n) {
+            const slides = document.querySelectorAll(".mySlides");
+            const dots = document.querySelectorAll(".dot");
+
+            if (n > slides.length) { slideIndex = 1; }
+            if (n < 1) { slideIndex = slides.length; }
+
+            slides.forEach(slide => slide.style.display = "none");
+            dots.forEach(dot => dot.classList.remove("active"));
+
+            slides[slideIndex - 1].style.display = "flex";
+            dots[slideIndex - 1].classList.add("active");
+        }
+    </script>
