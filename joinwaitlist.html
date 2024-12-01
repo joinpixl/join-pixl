@@ -200,49 +200,50 @@
             });
         });
 
-        document.getElementById('waitlistForm').addEventListener('submit', function(event) {
-            event.preventDefault();
+      document.getElementById('waitlistForm').addEventListener('submit', function(event) {
+    event.preventDefault();
 
-            const fullName = document.getElementById('fullName').value.trim();
-            const email = document.getElementById('email').value.trim();
-            const emailPattern = /^[^@\s]+@(gmail\.com|outlook\.com|yahoo\.com)$/i;
+    const fullName = document.getElementById('fullName').value.trim();
+    const email = document.getElementById('email').value.trim();
+    const emailPattern = /^[^@\s]+@(gmail\.com|outlook\.com|yahoo\.com|icloud\.com)$/i;
 
-            if (fullName === '') {
-                alert('Please enter your full name.');
-                return;
-            }
+    if (fullName === '') {
+        alert('Please enter your full name.');
+        return;
+    }
 
-            if (!emailPattern.test(email)) {
-                alert('Please enter a valid email address ending with @gmail.com, @outlook.com, or @yahoo.com.');
-                return;
-            }
+    if (!emailPattern.test(email)) {
+        alert('Please enter a valid email address ending with @gmail.com, @outlook.com, @yahoo.com, or @icloud.com.');
+        return;
+    }
 
-            const data = {
-                data: {
-                    "Name": fullName,
-                    "Email": email
-                }
-            };
+    const data = {
+        data: {
+            "Name": fullName,
+            "Email": email
+        }
+    };
 
-            fetch('https://api.apispreadsheets.com/data/1wCZDoqEVgE32ZMA/', {
-                method: 'POST',
-                body: JSON.stringify(data),
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            }).then(response => {
-                if (response.status === 201) {
-                    document.getElementById('overlay').style.display = 'block';
-                    document.getElementById('confirmationPopup').style.display = 'block';
-                    document.getElementById('waitlistForm').reset();
-                } else {
-                    alert('There was an error submitting your data. Please try again.');
-                }
-            }).catch(error => {
-                console.error('Error:', error);
-                alert('There was an error submitting your data. Please try again.');
-            });
-        });
+    fetch('https://api.apispreadsheets.com/data/1wCZDoqEVgE32ZMA/', {
+        method: 'POST',
+        body: JSON.stringify(data),
+        headers: {
+            'Content-Type': 'application/json'
+        },
+    }).then(response => {
+        if (response.status === 201) {
+            document.getElementById('overlay').style.display = 'block';
+            document.getElementById('confirmationPopup').style.display = 'block';
+            document.getElementById('waitlistForm').reset();
+        } else {
+            alert('There was an error submitting your data. Please try again.');
+        }
+    }).catch(error => {
+        console.error('Error:', error);
+        alert('There was an error submitting your data. Please try again.');
+    });
+});
+
 
         document.getElementById('overlay').addEventListener('click', function() {
             document.getElementById('overlay').style.display = 'none';
